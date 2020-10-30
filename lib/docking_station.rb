@@ -7,18 +7,15 @@ class DockingStation
   end
 
   def release_bike
-    if bikes.length == 0
-      "Nope, none for you."
-    else bikes.length >= 1
-      bikes.shift
-    end
+    raise RuntimeError if @bikes.length == 0
+    @bikes.shift
   end
 
   def docking(bike)
-    if bikes.length == 20
+    if @bikes.length == 20
       "Docking station full."
-    elsif bikes.length >= 0
-      bikes << bike
+    elsif @bikes.length >= 0
+      @bikes << bike
      "Thanks for the bike."
     end
   end
