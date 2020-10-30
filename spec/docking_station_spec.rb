@@ -23,13 +23,13 @@ describe DockingStation do
       expect(subject.docking(Bike.new)).to eq("Thanks for the bike.")
     end
 
-    it 'checks if docking station is full' do
-      20.times { subject.docking(Bike.new) }
-      expect(subject.docking(Bike.new)).to eq('Docking station full.')
-    end
-
     it 'can dock bike' do
       expect { subject.docking(Bike.new) }.to change { subject.bikes.length }.by(1)
+    end
+
+    it 'raises an error when more bikes than capacity' do
+      20.times { subject.docking(Bike.new) }
+      expect{ subject.docking(Bike.new) }.to raise_error("TOOO MANY")
     end
   end
 end
