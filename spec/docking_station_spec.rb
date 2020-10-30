@@ -12,6 +12,10 @@ describe DockingStation do
       subject.docking(Bike.new)
       expect(subject.release_bike).to be_instance_of(Bike)
     end
+
+    it 'Raises an error if there are no bikes' do
+      expect(subject.release_bike).to raise_error(RuntimeError)
+    end
   end
 
   context '#docking' do
