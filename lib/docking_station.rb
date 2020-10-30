@@ -1,20 +1,25 @@
+require_relative 'bike'
+
 class DockingStation
-  def release_bike
-    bike = Bike.new
+  attr_reader :bikes
+  def initialize
+    @bikes = []
   end
-  def docking
-    @counter = 0
-    if @counter == 0
-      @counter += 1
-      return 0
-    elsif @counter == 1
-      return "docking station full"
+
+  def release_bike
+    if bikes.length == 0
+      "Nope, none for you."
+    else bikes.length >= 1
+      bikes.shift
     end
   end
-end
 
-class Bike
-  def working?
-    true
+  def docking(bike)
+    if bikes.length == 20
+      "Docking station full."
+    elsif bikes.length >= 0
+      bikes << bike
+     "Thanks for the bike."
+    end
   end
 end
