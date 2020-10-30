@@ -1,7 +1,14 @@
-require_relative '../lib/docking_station.rb'
+require 'docking_station'
 require 'bike'
 
 describe DockingStation do
+
+  context '#initialize method' do
+    it 'allows user to set variable capacity' do
+      station = DockingStation.new(5)
+      expect(station.capacity).to eq(5)
+    end
+  end
 
   context '#release_bike' do
     it 'responds to release_bike' do
