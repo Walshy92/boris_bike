@@ -28,7 +28,7 @@ describe DockingStation do
     end
 
     it 'raises an error when more bikes than capacity' do
-      20.times { subject.docking(Bike.new) }
+      DockingStation::DEFAULT_CAPACITY.times { subject.docking(Bike.new) }
       expect{ subject.docking(Bike.new) }.to raise_error("TOOO MANY")
     end
   end
